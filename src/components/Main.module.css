@@ -1,0 +1,44 @@
+.container {
+    margin-top: 100px;
+}
+.container h2 {
+    color:rgb(0, 132, 255);
+    margin-bottom: 15px;
+}
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid silver;
+    width: 70%;
+    margin: 40px auto;
+    border-radius: 10px;
+    background-color: rgba(128, 128, 128, 0.195);
+    transition: all .15s ease;
+}
+.formContainer:hover {
+    background-color: rgba(128, 128, 128, 0.401);
+}
+.formContainer div {
+    margin-top: 20px;
+}
+.formContainer div input {
+    margin: 0 10px;
+    width: 250px;
+    border: 1px solid silver;
+    border-radius: 5px;
+    padding: 10px;
+    outline: none;
+}
+.formContainer button {
+    width: fit-content;
+    margin: 30px auto;
+    padding: 8px;
+    border:none;
+    border-radius: 10px;
+    background-color: rgba(0, 132, 255, 0.544);
+    cursor: pointer;
+    transition: all .12s ease;
+}
+.formContainer button:hover {
+    background-color: rgba(0, 132, 255, 0.827);
+}
