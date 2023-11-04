@@ -17,7 +17,7 @@
     transition: all .15s ease;
 }
 .formContainer:hover {
-    background-color: rgba(128, 128, 128, 0.401);
+    background-color: rgba(128, 128, 128, 0.286);
 }
 .formContainer div {
     margin-top: 20px;
@@ -32,7 +32,7 @@
 }
 .formContainer button {
     width: fit-content;
-    margin: 30px auto;
+    margin: 10px auto;
     padding: 8px;
     border:none;
     border-radius: 10px;
@@ -45,7 +45,10 @@
 }
 
 .formContainer span {
-    margin: 30px auto;
-    padding: 8px;
     color: red;
+    padding: 5px;
+    border: 1px solid red;
+    width: fit-content;
+    margin: 10px auto;
+    border-radius: 5px;
 }
