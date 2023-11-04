@@ -1,7 +1,7 @@
 const validate = (data) => {
     let error = "";
     if(!data.name.trim() || !data.lastName.trim()){
-        error = "Enter Valid Data!";
+        error = "Enter Valid Name and LastName!";
     }
     else if(!/\S+@\S+\.\S+/.test(data.email)){
         error = "Enter Valid Email!"

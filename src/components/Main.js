@@ -1,8 +1,10 @@
 import React , {useState ,useEffect} from "react";
 import styles from "./Main.module.css";
 import validate from "../functions/validate";
+import Contacts from "./Contacts";
 
 const Main = () => {
+    const [contacts,setContacts] = useState([])
     const [data,setData] = useState({
         name:"",
         lastName:"",
@@ -13,18 +15,27 @@ const Main = () => {
 
     useEffect(()=> {
         setError(validate(data))
-        console.log(error)
     },[data])
 
     const changeHandler = (event) => {
         setData({...data , [event.target.name]:event.target.value})
-        console.log(data.name)
+    }
+    const submitHandler = (e)=> {
+        e.preventDefault();
+        setContacts(contacts => ([...contacts,data]));
+        setData({
+            name:"",
+            lastName:"",
+            email:"",
+            phoneNumber: "" ,
+        })
+        console.log(contacts)
     }
   return (
     <div className={styles.container}>
       <h2>Contact App</h2>
       <p>Save your Contacts here | Developed by Ehsan</p>
-      <form className={styles.formContainer}>
+      <form className={styles.formContainer} onSubmit={submitHandler}>
         <div>
           <input type="text" placeholder="Name" name="name" value={data.name} onChange={changeHandler} />
           <input type="text" placeholder="Last Name" name="lastName" value={data.lastName} onChange={changeHandler}  />
@@ -35,6 +46,7 @@ const Main = () => {
         </div>
         {error ? <span>{error}</span> : <button>Add Contact</button>}
       </form>
+      {<Contacts contact={contacts} />}
     </div>
   );
 };
