@@ -1,5 +1,6 @@
 .container {
     margin-top: 100px;
+    transition: all .15s ease;
 }
 .container h2 {
     color:rgb(0, 132, 255);
@@ -9,7 +10,7 @@
     display: flex;
     flex-direction: column;
     border: 2px solid silver;
-    width: 70%;
+    width: 50%;
     margin: 40px auto;
     border-radius: 10px;
     background-color: rgba(128, 128, 128, 0.195);
@@ -41,4 +42,10 @@
 }
 .formContainer button:hover {
     background-color: rgba(0, 132, 255, 0.827);
+}
+
+.formContainer span {
+    margin: 30px auto;
+    padding: 8px;
+    color: red;
 }
