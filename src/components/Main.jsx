@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import styles from "./Main.module.css";
 import validate from "../functions/validate";
 import Contacts from "./Contacts";
+import { v4 } from "uuid";
 
 const Main = () => {
   const [contacts, setContacts] = useState([]);
   const [alert, setAlert] = useState("");
   const [data, setData] = useState({
+    id:"",
     name: "",
     lastName: "",
     email: "",
@@ -24,7 +26,8 @@ const Main = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (!error) {
-      setContacts((contacts) => [...contacts, data]);
+      setContacts((contacts) => [...contacts, newData]);
+      const newData = {...data , id:v4()}
       setData({
         name: "",
         lastName: "",
@@ -36,6 +39,10 @@ const Main = () => {
       setAlert(error);
     }
   };
+  const deleteHandler = id => {
+    const newContacts = contacts.filter(contact=>contact.id !== id);
+    setContacts(newContacts);
+  }
   return (
     <div className={styles.container}>
       <h2>Contact App</h2>
@@ -76,7 +83,7 @@ const Main = () => {
         {alert && <span>{alert}</span>}
         <button>Add Contact</button>
       </form>
-      {<Contacts contact={contacts} />}
+      {<Contacts contact={contacts} deleteHandler={deleteHandler} />}
     </div>
   );
 };
