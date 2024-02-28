@@ -8,13 +8,18 @@ const Main = () => {
   const [contacts, setContacts] = useState([]);
   const [alert, setAlert] = useState("");
   const [data, setData] = useState({
-    id:"",
+    id: "",
     name: "",
     lastName: "",
     email: "",
     phoneNumber: "",
   });
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const storedContacts = JSON.parse(localStorage.getItem("contacts")) || [];
+    setContacts(storedContacts);
+  }, []);
 
   useEffect(() => {
     setError(validate(data));
@@ -27,7 +32,8 @@ const Main = () => {
     e.preventDefault();
     if (!error) {
       setContacts((contacts) => [...contacts, newData]);
-      const newData = {...data , id:v4()}
+      const newData = { ...data, id: v4() };
+      localStorage.setItem("contacts", JSON.stringify([...contacts, newData]));
       setData({
         name: "",
         lastName: "",
@@ -39,10 +45,11 @@ const Main = () => {
       setAlert(error);
     }
   };
-  const deleteHandler = id => {
-    const newContacts = contacts.filter(contact=>contact.id !== id);
+  const deleteHandler = (id) => {
+    const newContacts = contacts.filter((contact) => contact.id !== id);
     setContacts(newContacts);
-  }
+    localStorage.setItem("contacts", JSON.stringify(newContacts));
+  };
   return (
     <div className={styles.container}>
       <h2>Contact App</h2>
